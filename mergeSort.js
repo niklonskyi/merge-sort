@@ -1,8 +1,13 @@
-const prompt = require('prompt-sync')({sigint: true});
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
-//Asking user to input array
-const userInput = prompt('Enter array separated by spaces: ');
-array = userInput.split(' ');
+readline.question(`Enter array divided by spaces: `, input => {
+    const array = input.split(' ');
+    console.log(mergeSort(array));
+    readline.close();
+});
 
 function mergeSort(array) {
     //array with a length of 1 is sorted by default
@@ -54,5 +59,3 @@ function merge(left, right) {
 
     return result;
 }
-
-console.log(mergeSort(array))
